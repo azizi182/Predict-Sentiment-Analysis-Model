@@ -173,7 +173,16 @@ print(f"Accuracy: {accurancy:.2f}")
 print(classification_report(y_test, pred_logistic))
 
 #confusion matrix
-ConfusionMatrixDisplay.from_predictions(y_test, pred_logistic);
+ConfusionMatrixDisplay.from_predictions(y_test, pred_logistic)
+# Ensure y_test is a flat array (and match y_pred shape)
+y_test = np.array(y_test).flatten()
+pred_logistic = np.array(pred_logistic).flatten()
+# Create DataFrame
+df = pd.DataFrame({'Actual': y_test, 'Predicted': pred_logistic})
+# Display all rows
+pd.set_option('display.max_rows', len(df))
+# View the comparison
+df
 
 # 3. Random Forest
 #training
@@ -191,6 +200,16 @@ print(f"Accuracy: {accurancy:.2f}")
 print(classification_report(y_test, pred_forest))
 
 #confusion matrix
-ConfusionMatrixDisplay.from_predictions(y_test, pred_forest);
+ConfusionMatrixDisplay.from_predictions(y_test, pred_forest)
+# Ensure y_test is a flat array (and match y_pred shape)
+y_test = np.array(y_test).flatten()
+pred_forest = np.array(pred_forest).flatten()
+# Create DataFrame
+df = pd.DataFrame({'Actual': y_test, 'Predicted': pred_forest})
+# Display all rows
+pd.set_option('display.max_rows', len(df))
+# View the comparison
+df
+
 
 
